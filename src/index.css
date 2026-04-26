@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-base:       #0d1117; /* GitHub bg */
+  --bg-surface:    #161b22; /* GitHub surface */
+  --bg-card:       #0d1117; 
+  --bg-elevated:   #21262d; /* GitHub elevated */
+  --bg-input:      #0d1117;
+
+  --border:        #30363d;
+  --border-mid:    #30363d;
+  --border-accent: rgba(88, 166, 255, 0.4);
+
+  --accent:        #58a6ff; /* GitHub blue */
+  --accent-soft:   rgba(56, 139, 253, 0.15);
+  --accent-glow:   rgba(56, 139, 253, 0.1);
+  --green:         #238636; /* GitHub primary green */
+  --green-soft:    rgba(46, 160, 67, 0.15);
+  --red:           #da3633; /* GitHub red */
+  --red-soft:      rgba(248, 81, 73, 0.1);
+  --amber:         #d29922; /* GitHub yellow */
+  --amber-soft:    rgba(210, 153, 34, 0.1);
+
+  --text-primary:  #e6edf3;
+  --text-secondary:#8d96a0;
+  --text-muted:    #7d8590;
+  --text-dim:      #6e7681;
+
+  --font-ui:       'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono:     'JetBrains Mono', 'IBM Plex Mono', monospace;
+
+  --radius-sm:     4px;
+  --radius-md:     6px;
+  --radius-lg:     8px;
+  --radius-xl:     12px;
+
+  --transition:    0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+::selection { background: var(--accent-soft); color: var(--accent); }
+
+/* ── Base elements ──────────────────────────────── */
+button { font-family: var(--font-ui); cursor: pointer; border: none; outline: none; }
+input, select { font-family: var(--font-ui); }
+a { color: inherit; }
+
+/* ── Animations ──────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.85); }
+}
+
+.spin { animation: spin 1s linear infinite; }
+
+/* ── Accessibility ──────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

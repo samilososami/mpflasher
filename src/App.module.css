@@ -1,0 +1,335 @@
+.layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  height: 100vh;
+  width: 100vw;
+  background: var(--bg-base);
+  overflow: hidden;
+}
+
+/* ── Sidebar ─────────────────────────────────────── */
+.sidebar {
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-mid);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 32px;
+  z-index: 10;
+}
+
+.sidebarTop {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logoIcon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-base) 100%);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.logoTitle {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: var(--text-primary);
+}
+
+.logoBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-mid);
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.logoBadgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+/* ── Vertical Stepper ────────────────────────────── */
+.stepper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.stepperRow {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  min-height: 56px;
+}
+
+.stepperCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stepperDot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border-mid);
+  background: var(--bg-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+  z-index: 2;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-mono);
+}
+
+.stepperNum {
+  line-height: 1;
+}
+
+.stepperDotActive {
+  border-color: var(--accent);
+  background: var(--bg-surface);
+  box-shadow: 0 0 0 1px var(--accent);
+  color: var(--accent);
+}
+
+.stepperDotDone {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.stepperLine {
+  flex: 1;
+  width: 2px;
+  background: var(--border-mid);
+  margin: 6px 0;
+  border-radius: 2px;
+  transition: background 0.3s ease;
+}
+
+.stepperLineDone {
+  background: var(--accent);
+  opacity: 0.5;
+}
+
+.stepperLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+  padding-top: 3px;
+}
+
+.stepperLabelActive {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.stepperLabelDone {
+  color: var(--text-secondary);
+}
+
+/* ── Sidebar Footer ──────────────────────────────── */
+.footer {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* ── Main Area ───────────────────────────────────── */
+.main {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--bg-base);
+}
+
+.topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 40px 48px 0;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 24px;
+}
+
+.topbarLeft {
+  flex: 1;
+  min-width: 0;
+}
+
+.pageTitle {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.pageDescription {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* ── Browser warning ─────────────────────────────── */
+.warningBar {
+  padding: 16px 48px 0;
+}
+
+.browserWarning {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--amber-soft);
+  border: 1px solid rgba(210,153,34,0.2);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* ── Content Area (two-column: steps + console) ──── */
+.contentArea {
+  flex: 1;
+  padding: 32px 48px 48px;
+  display: grid;
+  grid-template-columns: 1fr 40%;
+  gap: 48px;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.contentMain {
+  min-width: 0;
+  overflow-y: auto;
+}
+
+.contentWrapper {
+  width: 100%;
+}
+
+.stepContainer {
+  width: 100%;
+}
+
+/* ── Console Panel (always visible, right column) ── */
+.consolePanel {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 0;
+}
+
+.consolePanelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elevated);
+  flex-shrink: 0;
+}
+
+.consolePanelTitle {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.consolePanelInner {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.8;
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+  color: var(--text-secondary);
+  background: var(--bg-base);
+}
+
+.logLine        { display: block; }
+.logLineInfo    { color: var(--text-muted); }
+.logLineOk      { color: var(--green); }
+.logLineError   { color: var(--red); }
+.logLineWarn    { color: var(--amber); }
+.logLineAccent  { color: var(--accent); }
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 1100px) {
+  .contentArea {
+    grid-template-columns: 1fr 35%;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 900px) {
+  .contentArea {
+    grid-template-columns: 1fr;
+  }
+  .consolePanel {
+    max-height: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    display: none;
+  }
+  .topbar {
+    padding: 24px 24px 20px;
+  }
+  .contentArea {
+    padding: 24px 24px 40px;
+  }
+  .warningBar {
+    padding: 12px 24px 0;
+  }
+}
+
